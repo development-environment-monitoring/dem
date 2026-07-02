@@ -1,11 +1,11 @@
-# Docker Compose - Comandos de Operacao
+# Docker Compose - Comandos de Operação
 
 Este guia centraliza os comandos para subir, parar, diagnosticar e resetar o ambiente Docker do DEM.
 
 ## Requisito
 
-- Docker Engine em execucao.
-- Docker Compose disponivel no host.
+- Docker Engine em execução.
+- Docker Compose disponível no host.
 
 ## Subir ambiente
 
@@ -35,7 +35,7 @@ Parar sem remover:
 docker-compose stop
 ```
 
-Retomar apos stop:
+Retomar após stop:
 
 ```bash
 docker-compose start
@@ -57,13 +57,13 @@ docker-compose up -d --build
 
 ## Logs e status
 
-Ver status dos servicos:
+Ver status dos serviços:
 
 ```bash
 docker-compose ps
 ```
 
-Ver logs de todos os servicos:
+Ver logs de todos os serviços:
 
 ```bash
 docker-compose logs -f
@@ -86,7 +86,7 @@ docker-compose logs -f frontend
 - Frontend: http://localhost:3027
 - Backend: http://localhost:3026
 
-## Observacao sobre comando alternativo
+## Observação sobre comando alternativo
 
 Em alguns ambientes, o comando pode ser:
 
@@ -94,4 +94,4 @@ Em alguns ambientes, o comando pode ser:
 docker compose up -d
 ```
 
-Se o seu host nao suportar essa forma, use o comando com hifen (docker-compose), que e o padrao documentado neste projeto.
+Se o seu host não suportar essa forma, use o comando com hífen (docker-compose), que é o padrão documentado neste projeto.

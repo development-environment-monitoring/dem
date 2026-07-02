@@ -1,8 +1,8 @@
 # Arquitetura do DEM
 
-## Visao geral
+## Visão geral
 
-O projeto segue arquitetura de tres componentes:
+O projeto segue arquitetura de três componentes:
 
 - Backend API central (NestJS + TypeORM + SQLite)
 - Frontend web administrativo (React + Vite)
@@ -15,19 +15,19 @@ O projeto segue arquitetura de tres componentes:
 - Local: backend
 - Porta de desenvolvimento: 3026
 - Responsabilidades:
-  - autenticacao e autorizacao por perfil;
-  - CRUD de regras de verificacao;
-  - recebimento e persistencia de resultados;
-  - agregacao de dispositivos e aliases.
+  - autenticação e autorização por perfil;
+  - CRUD de regras de verificação;
+  - recebimento e persistência de resultados;
+  - agregação de dispositivos e aliases.
 
-Modulos principais:
+Módulos principais:
 
 - auth
-  - login, cadastro, sessao e troca de senha;
-  - gestao de usuarios e papel ADMIN/NORMAL.
+  - login, cadastro, sessão e troca de senha;
+  - gestão de usuários e papel ADMIN/NORMAL.
 
 - verifications
-  - define regras tecnicas com campos:
+  - define regras técnicas com campos:
     - name;
     - description;
     - active;
@@ -35,19 +35,19 @@ Modulos principais:
     - expectedOutput.
 
 - verification-results
-  - recebe execucoes vindas dos clientes;
-  - persiste historico por linha de execucao (append-only);
-  - expoe resumo de dispositivos e alias.
+  - recebe execuções vindas dos clientes;
+  - persiste histórico por linha de execução (append-only);
+  - expõe resumo de dispositivos e alias.
 
 ### Frontend
 
 - Local: frontend
 - Porta de desenvolvimento: 3027
 - Responsabilidades:
-  - login e sessao de usuario;
-  - dashboard de metricas;
-  - gestao de regras, usuarios e dispositivos;
-  - visualizacao de resultados.
+  - login e sessão de usuário;
+  - dashboard de métricas;
+  - gestão de regras, usuários e dispositivos;
+  - visualização de resultados.
 
 Telas operacionais:
 
@@ -55,15 +55,15 @@ Telas operacionais:
 - Painel de Status
 - Regras
 - Dispositivos
-- Usuarios
-- Configuracoes
+- Usuários
+- Configurações
 
 Mapa visual das telas:
 
 - Login:
   <img src="../assets/login.png" alt="Login" width="960" loading="lazy" />
-- Criacao de conta:
-  <img src="../assets/create-account.png" alt="Criacao de conta" width="960" loading="lazy" />
+- Criação de conta:
+  <img src="../assets/create-account.png" alt="Criação de conta" width="960" loading="lazy" />
 - Dashboard:
   <img src="../assets/dashboard.png" alt="Dashboard" width="960" loading="lazy" />
 - Status por regra:
@@ -72,23 +72,23 @@ Mapa visual das telas:
   <img src="../assets/status-device.png" alt="Status por dispositivo" width="960" loading="lazy" />
 - Regras:
   <img src="../assets/rules.png" alt="Regras" width="960" loading="lazy" />
-- Criacao de regra:
-  <img src="../assets/create-rule.png" alt="Criacao de regra" width="960" loading="lazy" />
+- Criação de regra:
+  <img src="../assets/create-rule.png" alt="Criação de regra" width="960" loading="lazy" />
 - Dispositivos:
   <img src="../assets/devices.png" alt="Dispositivos" width="960" loading="lazy" />
-- Usuarios:
-  <img src="../assets/users.png" alt="Usuarios" width="960" loading="lazy" />
+- Usuários:
+  <img src="../assets/users.png" alt="Usuários" width="960" loading="lazy" />
 
 ### Cliente
 
 - Local: client/run_client.py
 - Responsabilidades:
   - obter regras ativas em /verifications/active;
-  - executar comando da regra na maquina local;
+  - executar comando da regra na máquina local;
   - validar expectedOutput quando definido;
   - enviar payload para /verification-results.
 
-Informacoes de contexto enviadas por execucao:
+Informações de contexto enviadas por execução:
 
 - machineId
 - machineName
@@ -100,45 +100,45 @@ Informacoes de contexto enviadas por execucao:
 
 ## Fluxos principais
 
-### Fluxo de configuracao de regras
+### Fluxo de configuração de regras
 
 1. Admin autentica no frontend.
 2. Frontend chama backend para criar/editar regra.
-3. Regra fica disponivel para consulta ativa pelos clientes.
+3. Regra fica disponível para consulta ativa pelos clientes.
 
-### Fluxo de execucao distribuida
+### Fluxo de execução distribuída
 
 1. Cliente busca regras ativas.
 2. Cliente executa comandos localmente.
 3. Cliente envia resultado para API.
-4. Backend armazena uma nova linha por execucao.
+4. Backend armazena uma nova linha por execução.
 
 ### Fluxo de monitoramento
 
 1. Frontend busca resultados, regras ativas e dispositivos.
-2. Frontend consolida metricas de ok, erro e nao executado.
-3. Dashboard calcula ranking de pendencias e stale users.
+2. Frontend consolida métricas de ok, erro e não executado.
+3. Dashboard calcula ranking de pendências e stale users.
 
-## Modelo de dados (alto nivel)
+## Modelo de dados (alto nível)
 
 - users
   - credenciais e papel de acesso.
 
 - verifications
-  - regras tecnicas ativas/inativas.
+  - regras técnicas ativas/inativas.
 
 - verification_results
-  - historico de execucoes por regra e maquina.
+  - histórico de execuções por regra e máquina.
 
 - machine_aliases
-  - nome amigavel por machineId.
+  - nome amigável por machineId.
 
-## Seguranca e acesso
+## Segurança e acesso
 
-- Login cria token de sessao em memoria no backend.
+- Login cria token de sessão em memória no backend.
 - Endpoints administrativos exigem Authorization: Bearer token.
-- Primeiro usuario registrado recebe papel ADMIN.
-- O sistema impede remover o ultimo administrador.
+- Primeiro usuário registrado recebe papel ADMIN.
+- O sistema impede remover o último administrador.
 
 ## Endpoints principais
 
@@ -166,21 +166,21 @@ Resultados:
 - GET /verification-results/devices
 - PUT /verification-results/devices/:machineId/alias
 
-## Decisoes tecnicas atuais
+## Decisões técnicas atuais
 
-- SQLite para simplicidade local e setup rapido.
-- Sessao em memoria para fluxo inicial de autenticacao.
-- Cliente em Python para facilitar execucao em ambientes Linux.
+- SQLite para simplicidade local e setup rápido.
+- Sessão em memória para fluxo inicial de autenticação.
+- Cliente em Python para facilitar execução em ambientes Linux.
 
-## Limitacoes conhecidas
+## Limitações conhecidas
 
-- Sessao em memoria nao e ideal para horizontal scaling.
-- Persistencia SQLite pode limitar cenarios de alta concorrencia.
-- Nao ha agendador central de execucao no estado atual.
+- Sessão em memória não é ideal para horizontal scaling.
+- Persistência SQLite pode limitar cenários de alta concorrência.
+- Não há agendador central de execução no estado atual.
 
-## Evolucoes recomendadas
+## Evoluções recomendadas
 
-1. JWT com expiracao e estrategia de revogacao.
-2. Migracao para PostgreSQL em ambiente compartilhado.
-3. Agendamento central e politicas de frequencia por regra.
-4. Notificacoes proativas para pendencias criticas.
+1. JWT com expiração e estratégia de revogação.
+2. Migração para PostgreSQL em ambiente compartilhado.
+3. Agendamento central e políticas de frequência por regra.
+4. Notificações proativas para pendências críticas.

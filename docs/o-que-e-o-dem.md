@@ -1,42 +1,42 @@
-# O que e o DEM
+# O que é o DEM
 
-## Definicao
+## Definição
 
-DEM (Development Environment Monitoring) e uma solucao para monitorar conformidade tecnica de ambientes de desenvolvimento.
+DEM (Development Environment Monitoring) é uma solução para monitorar conformidade técnica de ambientes de desenvolvimento.
 
-Em vez de observar apenas disponibilidade de servicos, o DEM verifica se cada maquina esta seguindo regras operacionais definidas pelo time, por exemplo:
+Em vez de observar apenas disponibilidade de serviços, o DEM verifica se cada máquina está seguindo regras operacionais definidas pelo time, por exemplo:
 
-- ferramenta instalada em versao minima;
-- comando obrigatorio retornando saida esperada;
-- padrao tecnico requerido para produtividade e seguranca.
+- ferramenta instalada em versão mínima;
+- comando obrigatório retornando saída esperada;
+- padrão técnico requerido para produtividade e segurança.
 
 ## Problema que o DEM resolve
 
-Times tecnicos costumam enfrentar variacao entre ambientes de desenvolvimento:
+Times técnicos costumam enfrentar variação entre ambientes de desenvolvimento:
 
-- em uma maquina funciona, em outra nao;
+- em uma máquina funciona, em outra não;
 - onboarding inconsistente;
 - perda de tempo com erros repetitivos de setup;
-- baixa visibilidade sobre quem esta fora do padrao.
+- baixa visibilidade sobre quem está fora do padrão.
 
-O DEM reduz esse gap ao transformar regras tecnicas em verificacoes automatizadas e centralizadas.
+O DEM reduz esse gap ao transformar regras técnicas em verificações automatizadas e centralizadas.
 
-## Para quem e o DEM
+## Para quem é o DEM
 
-O DEM e pensado para equipes que precisam governanca tecnica sem perder agilidade.
+O DEM é pensado para equipes que precisam governança técnica sem perder agilidade.
 
-- Lideranca tecnica (Tech Leads, Staff, Arquitetura): define e evolui padroes.
-- Equipe de plataforma/DevEx: monitora aderencia e remove friccao de ambiente.
+- Liderança técnica (Tech Leads, Staff, Arquitetura): define e evolui padrões.
+- Equipe de plataforma/DevEx: monitora aderência e remove fricção de ambiente.
 - Times de desenvolvimento: recebem feedback objetivo sobre conformidade local.
-- Operacao interna/seguranca: ganha trilha historica para auditoria tecnica.
+- Operação interna/segurança: ganha trilha histórica para auditoria técnica.
 
 ## Como funciona no dia a dia
 
 1. Um administrador cadastra regras no painel.
-2. O cliente DEM executa as regras na maquina local.
+2. O cliente DEM executa as regras na máquina local.
 3. O cliente envia resultado (success/error) e output para o backend.
-4. O dashboard consolida status por usuario, dispositivo e regra.
-5. A equipe prioriza correcoes com base em pendencias reais.
+4. O dashboard consolida status por usuário, dispositivo e regra.
+5. A equipe prioriza correções com base em pendências reais.
 
 ## Telas do sistema
 
@@ -46,9 +46,9 @@ Tela de login:
 
 <img src="../assets/login.png" alt="Tela de login" width="960" loading="lazy" />
 
-Tela de criacao de conta:
+Tela de criação de conta:
 
-<img src="../assets/create-account.png" alt="Tela de criacao de conta" width="960" loading="lazy" />
+<img src="../assets/create-account.png" alt="Tela de criação de conta" width="960" loading="lazy" />
 
 ### Monitoramento e status
 
@@ -56,51 +56,51 @@ Dashboard:
 
 <img src="../assets/dashboard.png" alt="Dashboard" width="960" loading="lazy" />
 
-Painel de status por usuario/regra:
+Painel de status por regra:
 
-<img src="../assets/status-rule.png" alt="Painel de status por usuario e regra" width="960" loading="lazy" />
+<img src="../assets/status-rule.png" alt="Painel de status por usuário e regra" width="960" loading="lazy" />
 
 Painel de status por dispositivo:
 
 <img src="../assets/status-device.png" alt="Painel de status por dispositivo" width="960" loading="lazy" />
 
-### Governanca operacional
+### Governança operacional
 
 Lista de regras:
 
 <img src="../assets/rules.png" alt="Lista de regras" width="960" loading="lazy" />
 
-Criacao/edicao de regra:
+Criação/edição de regra:
 
-<img src="../assets/create-rule.png" alt="Criacao de regra" width="960" loading="lazy" />
+<img src="../assets/create-rule.png" alt="Criação de regra" width="960" loading="lazy" />
 
 Lista de dispositivos:
 
 <img src="../assets/devices.png" alt="Lista de dispositivos" width="960" loading="lazy" />
 
-Gestao de usuarios:
+Gestão de usuários:
 
-<img src="../assets/users.png" alt="Gestao de usuarios" width="960" loading="lazy" />
+<img src="../assets/users.png" alt="Gestão de usuários" width="960" loading="lazy" />
 
 ## Diferenciais do DEM neste projeto
 
-- Foco em conformidade tecnica, nao apenas uptime de infraestrutura.
-- Coleta distribuida (execucao local), evitando suposicoes do servidor.
-- Historico de resultados append-only para rastreabilidade.
-- Visao de acao com ranking de pendencias e usuarios sem comunicacao recente.
-- Identificacao amigavel de dispositivos por alias.
+- Foco em conformidade técnica, não apenas uptime de infraestrutura.
+- Coleta distribuída (execução local), evitando suposições do servidor.
+- Histórico de resultados append-only para rastreabilidade.
+- Visão de ação com ranking de pendências e usuários sem comunicação recente.
+- Identificação amigável de dispositivos por alias.
 - Controle de acesso por perfil (ADMIN e NORMAL).
 
-## O que o DEM nao substitui
+## O que o DEM não substitui
 
-O DEM nao substitui ferramentas classicas de observabilidade de producao.
-Ele complementa esse ecossistema ao cobrir uma camada diferente: qualidade e padronizacao do ambiente de desenvolvimento.
+O DEM não substitui ferramentas clássicas de observabilidade de produção.
+Ele complementa esse ecossistema ao cobrir uma camada diferente: qualidade e padronização do ambiente de desenvolvimento.
 
 ## Quando adotar
 
 O DEM tende a gerar mais valor quando:
 
 - existe mais de um time/produto compartilhando padroes;
-- o onboarding esta lento ou inconsistente;
-- ha recorrencia de incidentes por divergencia de ambiente local;
+- o onboarding está lento ou inconsistente;
+- há recorrência de incidentes por divergência de ambiente local;
 - a equipe quer reduzir troubleshooting repetitivo.

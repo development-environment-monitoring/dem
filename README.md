@@ -1,11 +1,11 @@
 # DEM - Development Environment Monitoring
 
-Este repositorio implementa o DEM, uma plataforma para monitorar conformidade tecnica de ambientes de desenvolvimento.
+Este repositório implementa o DEM, uma plataforma para monitorar conformidade técnica de ambientes de desenvolvimento.
 
-## Documentacao por assunto
+## Documentação por assunto
 
-- O que e o DEM e para quem serve: [docs/o-que-e-o-dem.md](docs/o-que-e-o-dem.md)
-- Arquitetura tecnica detalhada: [docs/arquitetura.md](docs/arquitetura.md)
+- O que é o DEM e para quem serve: [docs/o-que-e-o-dem.md](docs/o-que-e-o-dem.md)
+- Arquitetura técnica detalhada: [docs/arquitetura.md](docs/arquitetura.md)
 - Comandos Docker Compose: [docs/docker-compose.md](docs/docker-compose.md)
 
 ## Requisitos
@@ -25,7 +25,7 @@ npm install --prefix ./backend
 npm run start:dev --prefix ./backend
 ```
 
-API disponivel em http://localhost:3026
+API disponível em http://localhost:3026
 
 ### 2) Frontend
 
@@ -34,7 +34,7 @@ npm install --prefix ./frontend
 npm run dev --prefix ./frontend
 ```
 
-Frontend disponivel em http://localhost:3027
+Frontend disponível em http://localhost:3027
 
 ## Como executar com Docker Compose
 
@@ -44,7 +44,7 @@ Na raiz do projeto:
 docker-compose up -d
 ```
 
-Servicos disponiveis:
+Serviços disponíveis:
 
 - Frontend: http://localhost:3027
 - Backend: http://localhost:3026
@@ -65,11 +65,11 @@ docker-compose up -d --build
 ## Primeiro acesso
 
 - Abra a tela de login no frontend.
-- Cadastre o primeiro usuario.
+- Cadastre o primeiro usuário.
 - O primeiro cadastro vira ADMIN automaticamente.
-- Usuarios seguintes entram como NORMAL.
+- Usuários seguintes entram como NORMAL.
 
-## Executando o cliente de verificacao
+## Executando o cliente de verificação
 
 Com backend ativo e regras criadas:
 
@@ -77,7 +77,7 @@ Com backend ativo e regras criadas:
 python3 ./client/run_client.py --api-base-url http://localhost:3026
 ```
 
-Tambem e possivel usar variavel de ambiente:
+Também é possível usar variável de ambiente:
 
 ```bash
 export DEM_API_BASE_URL=http://localhost:3026
@@ -96,7 +96,7 @@ python3 ./client/run_client.py
 
 - Regras:
 	- GET /verifications (admin)
-	- GET /verifications/active (publico para cliente)
+	- GET /verifications/active (público para cliente)
 	- POST /verifications (admin)
 	- PUT /verifications/:id (admin)
 	- DELETE /verifications/:id (admin)
@@ -107,8 +107,8 @@ python3 ./client/run_client.py
 	- GET /verification-results/devices (admin)
 	- PUT /verification-results/devices/:machineId/alias (admin)
 
-## Estrutura resumida do repositorio
+## Estrutura resumida do repositório
 
-- backend: API e persistencia.
+- backend: API e persistência.
 - frontend: painel web.
-- client: executor local das verificacoes.
+- client: executor local das verificações.
