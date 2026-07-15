@@ -2,7 +2,7 @@
 
 ## Visão geral
 
-O projeto segue arquitetura de três componentes:
+O projeto segue uma arquitetura de três componentes:
 
 - Backend API central (NestJS + TypeORM + SQLite)
 - Frontend web administrativo (React + Vite)
@@ -37,7 +37,7 @@ Módulos principais:
 - verification-results
   - recebe execuções vindas dos clientes;
   - persiste histórico por linha de execução (append-only);
-  - expõe resumo de dispositivos e alias.
+  - expõe resumo de dispositivos e aliases.
 
 ### Frontend
 
@@ -61,30 +61,30 @@ Telas operacionais:
 Mapa visual das telas:
 
 - Login:
-  <img src="../assets/login.png" alt="Login" width="960" loading="lazy" />
+  <img src="assets/login.png" alt="Login" width="960" loading="lazy" />
 - Criação de conta:
-  <img src="../assets/create-account.png" alt="Criação de conta" width="960" loading="lazy" />
+  <img src="assets/create-account.png" alt="Criação de conta" width="960" loading="lazy" />
 - Dashboard:
-  <img src="../assets/dashboard.png" alt="Dashboard" width="960" loading="lazy" />
+  <img src="assets/dashboard.png" alt="Dashboard" width="960" loading="lazy" />
 - Status por regra:
-  <img src="../assets/status-rule.png" alt="Status por regra" width="960" loading="lazy" />
+  <img src="assets/status-rule.png" alt="Status por regra" width="960" loading="lazy" />
 - Status por dispositivo:
-  <img src="../assets/status-device.png" alt="Status por dispositivo" width="960" loading="lazy" />
+  <img src="assets/status-device.png" alt="Status por dispositivo" width="960" loading="lazy" />
 - Regras:
-  <img src="../assets/rules.png" alt="Regras" width="960" loading="lazy" />
+  <img src="assets/rules.png" alt="Regras" width="960" loading="lazy" />
 - Criação de regra:
-  <img src="../assets/create-rule.png" alt="Criação de regra" width="960" loading="lazy" />
+  <img src="assets/create-rule.png" alt="Criação de regra" width="960" loading="lazy" />
 - Dispositivos:
-  <img src="../assets/devices.png" alt="Dispositivos" width="960" loading="lazy" />
+  <img src="assets/devices.png" alt="Dispositivos" width="960" loading="lazy" />
 - Usuários:
-  <img src="../assets/users.png" alt="Usuários" width="960" loading="lazy" />
+  <img src="assets/users.png" alt="Usuários" width="960" loading="lazy" />
 
 ### Cliente
 
 - Local: client/run_client.py
 - Responsabilidades:
   - obter regras ativas em /verifications/active;
-  - executar comando da regra na máquina local;
+  - executar o comando da regra na máquina local;
   - validar expectedOutput quando definido;
   - enviar payload para /verification-results.
 
@@ -103,21 +103,21 @@ Informações de contexto enviadas por execução:
 ### Fluxo de configuração de regras
 
 1. Admin autentica no frontend.
-2. Frontend chama backend para criar/editar regra.
-3. Regra fica disponível para consulta ativa pelos clientes.
+2. O frontend chama o backend para criar/editar a regra.
+3. A regra fica disponível para consulta ativa pelos clientes.
 
 ### Fluxo de execução distribuída
 
-1. Cliente busca regras ativas.
-2. Cliente executa comandos localmente.
-3. Cliente envia resultado para API.
-4. Backend armazena uma nova linha por execução.
+1. O cliente busca regras ativas.
+2. O cliente executa comandos localmente.
+3. O cliente envia o resultado para a API.
+4. O backend armazena uma nova linha por execução.
 
 ### Fluxo de monitoramento
 
-1. Frontend busca resultados, regras ativas e dispositivos.
-2. Frontend consolida métricas de ok, erro e não executado.
-3. Dashboard calcula ranking de pendências e stale users.
+1. O frontend busca resultados, regras ativas e dispositivos.
+2. O frontend consolida métricas de ok, erro e não executado.
+3. O dashboard calcula o ranking de pendências e de usuários sem comunicação recente.
 
 ## Modelo de dados (alto nível)
 
@@ -169,13 +169,13 @@ Resultados:
 ## Decisões técnicas atuais
 
 - SQLite para simplicidade local e setup rápido.
-- Sessão em memória para fluxo inicial de autenticação.
-- Cliente em Python para facilitar execução em ambientes Linux.
+- Sessão em memória para o fluxo inicial de autenticação.
+- Cliente em Python para facilitar a execução em ambientes Linux.
 
 ## Limitações conhecidas
 
-- Sessão em memória não é ideal para horizontal scaling.
-- Persistência SQLite pode limitar cenários de alta concorrência.
+- Sessão em memória não é ideal para escalabilidade horizontal.
+- A persistência em SQLite pode limitar cenários de alta concorrência.
 - Não há agendador central de execução no estado atual.
 
 ## Evoluções recomendadas
